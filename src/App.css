@@ -1,0 +1,78 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "image sidebar"
+    "slider sidebar";
+  height: 100vh;
+  width: 100vw;
+  background-color: #dadada;
+}
+
+.main-image {
+  grid-area: image;
+  background-image: url("https://source.unsplash.com/EwKXn5CapA4");
+  width: 100%;
+  height: 100%;
+  background-position: top center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: rgba(72, 60, 231, 0.25);
+  border-left: 1px solid rgba(72, 60, 231, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.sideBarItem {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 1rem;
+  position: relative;
+  transition: background-color 600ms;
+}
+.sideBarItem.active {
+  background-color: rgba(71, 60, 231, 0.884);
+}
+
+.sideBarItem:hover,
+.sidebar:focus {
+  background-color: rgba(71, 60, 231, 0.767);
+}
+.sideBarItem::after {
+  content: "";
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  bottom: 0;
+  height: 1px;
+  background-color: rgb(71, 60, 231);
+}
+.sideBarItem:last-child::after {
+  display: none;
+}
+
+.slider-container {
+  grid-area: slider;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.slider {
+  width: 100%;
+  cursor: pointer;
+}
